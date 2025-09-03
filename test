@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>عبقرينو | ماركتينج & ذكاء اصطناعي</title>
+  <meta name="description" content="صفحة عبقرينو الرسمية: لينكات السوشيال ونشرة الذكاء الاصطناعي.">
+
+<!-- Google Tag Manager --> 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K2ZHGVCS');</script>
+<!-- End Google Tag Manager -->
+  <!-- ============================================================ -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> body{background:#071022;color:#fff;font-family:Inter,system-ui,-apple-system,"Cairo",sans-serif} .card{background:rgba(255,255,255,0.03);border-radius:14px;padding:20px;} a{color:inherit;text-decoration:none} </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2ZHGVCS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px">
+    <div class="card" style="max-width:720px;width:100%">
+      <header style="display:flex;gap:16px;align-items:center;margin-bottom:12px">
+        <img src="REPLACE_YOUR_LOGO" alt="عبقرينو" style="width:64px;height:64px;border-radius:12px">
+        <div>
+          <h1 style="margin:0;font-size:20px;font-weight:700">عبقرينو</h1>
+          <p style="margin:0;color:#cbd5e1">ماركتينج × ذكاء اصطناعي — شروحات وملفات عملية</p>
+        </div>
+      </header>
+
+      <!-- CTA رئيسي -->
+      <a href="https://youtube.com/playlist?list=PLpQkFPTYq_5cDHySmv-hCyB7CXKGxguJ3&si=fY6-nULq1YTNgObx" class="primary-cta" data-event="primary_cta" data-platform="leadmagnet"
+         style="display:block;background:#10b981;padding:12px;border-radius:10px;text-align:center;font-weight:600;margin-bottom:12px">
+         شوف الـ youtube playlist من هنا
+      </a>
+
+      <!-- أزرار السوشيال -->
+      <div style="display:grid;gap:10px">
+        <a href="https://www.youtube.com/@3bkarino997?utm_source=landing&utm_medium=button&utm_campaign=linkinbio"
+           class="btn" data-event="click_social" data-platform="youtube"
+           style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);text-align:center">YouTube</a>
+
+        <a href="https://www.tiktok.com/@3bkarino997?utm_source=landing&utm_medium=button&utm_campaign=linkinbio"
+           class="btn" data-event="click_social" data-platform="tiktok"
+           style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);text-align:center">TikTok</a>
+
+        <a href="https://www.instagram.com/3bkarino997/?utm_source=landing&utm_medium=button&utm_campaign=linkinbio"
+           class="btn" data-event="click_social" data-platform="instagram"
+           style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);text-align:center">instagram</a>
+
+        <a href="https://pin.it/4ZiWSBLpb?utm_source=landing&utm_medium=button&utm_campaign=linkinbio"
+           class="btn" data-event="click_social" data-platform="linkedin"
+           style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);text-align:center">pinterest</a>
+      </div>
+
+      <!-- نموذج اشتراك (Netlify Forms) -->
+      <form id="signup" name="signup" method="POST" data-netlify="true" style="margin-top:14px">
+        <input type="hidden" name="form-name" value="signup">
+        <input name="email" type="email" required placeholder="ادخل بريدك الإلكتروني"
+               style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:transparent;margin-bottom:8px;color:#fff">
+        <button type="submit" style="width:100%;background:#6366f1;padding:10px;border-radius:10px;font-weight:600">اشترك في النشرة</button>
+      </form>
+
+      <footer style="margin-top:14px;color:#94a3b8;font-size:13px">© <span id="year"></span> عبقرينو</footer>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // push simple events to dataLayer (GTM)
+    document.addEventListener('click', function(e){
+      const t = e.target.closest('[data-event]');
+      if(!t) return;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: t.dataset.event,
+        platform: t.dataset.platform || undefined
+      });
+    });
+
+    document.getElementById('signup')?.addEventListener('submit', function(){
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({event:'lead_subscribed'});
+    });
+  </script>
+</body>
+</html>
