@@ -208,31 +208,41 @@
 
 
 <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbxT-bjvaECVm6OaK4oB9R0Zsax5xQWYf0mXeCfG_7jgfNg-Bd-5ui64B8SAL45BZCaBjQ/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxCUPb0WQysZOadV2q3PkxCQ6lErVr51w0eN6ihCoPLO_ypa2i2nxFR57XfcncGa3kdnw/exec";
+
   const deviceInfo = navigator.userAgent;
   let userEmail = "";
   let userName = "";
+  const sessionID = Date.now() + "_" + Math.floor(Math.random() * 100000); // رقم فريد للجلسة
 
-  // 🟡 متابعة الضغط على زر الاشتراك (إدخال الإيميل)
-  document.getElementById('signup').addEventListener('submit', function(e){
-    e.preventDefault();
-    userEmail = document.getElementById('emailField').value; // تخزين الإيميل
-    document.getElementById('namePopup').style.display = "flex";
-  });
-
-  // 🟡 بعد كتابة الاسم
-  document.getElementById('okBtn').addEventListener('click', function(){
-    userName = document.getElementById('nameField').value;
-
+  // 🟡 تسجيل أي حدث (عام)
+  function logAction(action, details="") {
     fetch(scriptURL, {
-      method: 'POST',
+      method: "POST",
       body: new URLSearchParams({
-        action: "signup",
+        session: sessionID,
+        action: action,
+        details: details,
         email: userEmail,
         name: userName,
-        device: deviceInfo
+        device: deviceInfo,
+        timestamp: new Date().toISOString()
       })
     });
+  }
+
+  // 🟡 بعد إدخال الإيميل
+  document.getElementById('signup').addEventListener('submit', function(e){
+    e.preventDefault();
+    userEmail = document.getElementById('emailField').value;
+    document.getElementById('namePopup').style.display = "flex";
+    logAction("typed_email", "كتب الإيميل");
+  });
+
+  // 🟡 بعد إدخال الاسم
+  document.getElementById('okBtn').addEventListener('click', function(){
+    userName = document.getElementById('nameField').value;
+    logAction("typed_name", "كتب الاسم");
 
     alert("✅ تم الاشتراك بنجاح!");
     document.getElementById('namePopup').style.display = "none";
@@ -242,31 +252,15 @@
   // 🟡 متابعة الضغط على أي زر (سوشيال أو تواصل)
   document.querySelectorAll("header a, .contact-section a").forEach(link => {
     link.addEventListener("click", function() {
-      fetch(scriptURL, {
-        method: "POST",
-        body: new URLSearchParams({
-          action: "click",
-          button: this.href,
-          email: userEmail || "لم يدخل الإيميل",
-          name: userName,
-          device: deviceInfo
-        })
-      });
+      logAction("click", this.href);
     });
   });
 
   // 🟡 متابعة الخروج بدون أي فعل
   window.addEventListener("beforeunload", function() {
-    fetch(scriptURL, {
-      method: "POST",
-      body: new URLSearchParams({
-        action: "exit",
-        email: userEmail || "لم يدخل الإيميل",
-        name: userName,
-        device: deviceInfo
-      })
-    });
+    logAction("exit", "المستخدم غادر الصفحة");
   });
+
 
 
 
@@ -307,6 +301,7 @@
 
 </body>
 </html>
+
 
 
 
