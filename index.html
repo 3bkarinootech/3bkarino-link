@@ -210,48 +210,61 @@
 <script>
   const scriptURL = "https://script.google.com/macros/s/AKfycbxSZd8FFtFxPONzuNypu-by0jd5T4i5pzBxTkU4W__HueNijhPT87EfQvI2vOYToURa6Q/exec";
 
-  // ✅ نولّد ID ثابت ونخزنه
-  function getUserId() {
-    let uid = localStorage.getItem("userId");
-    if (!uid) {
-      uid = "UID_" + Date.now() + "_" + Math.floor(Math.random()*100000);
-      localStorage.setItem("userId", uid);
-    }
-    return uid;
+  let userId = localStorage.getItem("userId");
+  if (!userId) {
+    userId = "UID-" + Date.now() + "-" + Math.floor(Math.random() * 100000);
+    localStorage.setItem("userId", userId);
   }
 
-  const userId = getUserId();
+  let userEmail = "";
+  let userName = "";
+  let userDevice = navigator.userAgent;
 
-  // ✅ اسم الجهاز
-  function getDevice() {
-    return navigator.userAgent;
-  }
-
-  // ✅ دالة لتسجيل أي حدث
-  function logAction(action, details="", email="", name="") {
+  // 🔹 دالة إرسال البيانات
+  function logAction(action, details = "") {
     fetch(scriptURL, {
-      method: "POST",
+      method: 'POST',
       body: new URLSearchParams({
         userId: userId,
-        device: getDevice(),
+        email: userEmail,
+        name: userName,
+        device: userDevice,
         action: action,
-        details: details,
-        email: email,
-        name: name
+        details: details
       })
-    });
+    }).catch(err => console.error("خطأ في الإرسال:", err));
   }
 
-  // مثال: يسجل كل ضغطة زر
+  // 🔹 أول مرة يفتح الصفحة
+  logAction("visit", "المستخدم فتح الصفحة");
+
+  // 🔹 كليك على أي زر
   document.querySelectorAll("a, button").forEach(el => {
     el.addEventListener("click", () => {
-      logAction("click", el.innerText || el.href);
+      logAction("click", el.innerText || el.href || "زر");
     });
   });
 
-  // مثال: يسجل خروج المستخدم
-  window.addEventListener("beforeunload", () => {
-    logAction("exit", "غادر الصفحة");
+  // 🔹 تسجيل الإيميل بعد إدخاله
+  document.getElementById("signup").addEventListener("submit", function(e) {
+    e.preventDefault();
+    userEmail = document.getElementById("emailField").value;
+    logAction("typed_email", "المستخدم كتب الإيميل");
+    document.getElementById("namePopup").style.display = "flex";
+  });
+
+  // 🔹 تسجيل الاسم بعد إدخاله
+  document.getElementById("okBtn").addEventListener("click", function() {
+    userName = document.getElementById("nameField").value;
+    logAction("typed_name", "المستخدم كتب اسمه");
+    alert("✅ تم الاشتراك بنجاح!");
+    document.getElementById("namePopup").style.display = "none";
+    document.getElementById("signup").reset();
+  });
+
+  // 🔹 لو خرج من الصفحة
+  window.addEventListener("beforeunload", function() {
+    logAction("exit", "المستخدم خرج من الصفحة");
   });
 
 
@@ -295,6 +308,7 @@
 
 </body>
 </html>
+
 
 
 
