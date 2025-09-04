@@ -206,9 +206,54 @@
     </div>
   </div>
 
-  <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbx8-8oQ9lUa5tpJiTWgN0zqBU-BR-2ty98E5UvEdLIjhUuBiqlKaMtutlA3VFBP4GyQjA/exec"; // ضع هنا رابط Web App
-    let userEmail = "";
+<script>
+  const scriptURL = "https://script.google.com/macros/s/XXXXX/exec";
+
+  // 🖥️ جلب نوع الجهاز والمتصفح
+  const deviceInfo = navigator.userAgent;
+
+  // ✅ متابعة الضغط على زر الاشتراك
+  document.getElementById("signup").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const email = document.getElementById("emailField").value;
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({
+        action: "signup",
+        email: email,
+        device: deviceInfo
+      })
+    });
+    alert("✅ تم الاشتراك بنجاح!");
+  });
+
+  // ✅ متابعة الضغط على روابط السوشيال
+  document.querySelectorAll("header a, .contact-section a").forEach(link => {
+    link.addEventListener("click", function() {
+      fetch(scriptURL, {
+        method: "POST",
+        body: new URLSearchParams({
+          action: "click",
+          button: this.href,
+          device: deviceInfo
+        })
+      });
+    });
+  });
+
+  // ✅ متابعة الخروج بدون أي فعل
+  window.addEventListener("beforeunload", function() {
+    fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({
+        action: "exit",
+        device: deviceInfo
+      })
+    });
+  });
+</script>
+
 
     // Step 1: بعد إدخال الإيميل
     document.getElementById('signup').addEventListener('submit', function(e){
@@ -247,6 +292,7 @@
 
 </body>
 </html>
+
 
 
 
