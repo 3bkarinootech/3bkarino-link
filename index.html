@@ -195,7 +195,7 @@
   </div>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/library/d/1ZsRngYM3seIDZUmw0-6_ix_UU7j_8r4piCuh9l-jLhJ5WnNnN1zbJLj6/2"; // ضع هنا رابط Web App
+    const scriptURL = "https://script.google.com/macros/s/XXXXX/exec"; // ضع هنا رابط Web App
     let userEmail = "";
 
     // Step 1: بعد إدخال الإيميل
@@ -205,52 +205,16 @@
       document.getElementById('namePopup').style.display = "flex";
 
       // ❤️ انيميشن القلب
-    <style>
-  .heart {
-    position: fixed;
-    font-size: 24px;
-    animation: floatUp 1s forwards;
-    pointer-events: none;
-  }
-
-  @keyframes floatUp {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-80px) scale(1.6); opacity: 0; }
-  }
-</style>
-
-<script>
-  function showHearts(button) {
-    const rect = button.getBoundingClientRect();
-    const colors = ["red", "#FDD600", "deeppink"]; // ألوان مختلفة
-
-    colors.forEach((color, index) => {
-      setTimeout(() => {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.style.color = color;
-        heart.innerHTML = "❤";
-
-        // مكان البداية (في نص الزرار)
-        heart.style.left = rect.left + rect.width/2 - 10 + "px";
-        heart.style.top = rect.top - 10 + "px";
-
-        // حركة عشوائية يمين/شمال
-        const randomX = (Math.random() * 60) - 30; // من -30px ل +30px
-        heart.style.transform = `translateX(${randomX}px)`;
-
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 1000);
-      }, index * 200); // فرق زمني بين القلوب
+      const btn = e.target.querySelector("button");
+      const rect = btn.getBoundingClientRect();
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = rect.left + rect.width/2 - 10 + "px";
+      heart.style.top = rect.top - 10 + "px";
+      heart.innerHTML = "❤";
+      document.body.appendChild(heart);
+      setTimeout(()=> heart.remove(), 1000);
     });
-  }
-
-  // تشغيل الانيميشن عند الضغط على زر الاشتراك
-  document.querySelector("#signup button").addEventListener("click", function(e) {
-    showHearts(this);
-  });
-</script>
-
 
     // Step 2: بعد إدخال الاسم
     document.getElementById('okBtn').addEventListener('click', function(){
@@ -271,4 +235,3 @@
 
 </body>
 </html>
-
