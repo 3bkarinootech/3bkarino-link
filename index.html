@@ -66,6 +66,24 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+  <script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwQRQUy6nkNT9yx61yb-bmiyWH3SmRvcnZc4rG0alM_bjYK9XIdhaP8dKi_thIKjP6YUA/exec"; // ← ضع هنا رابط الـ Web App
+
+  document.getElementById('signup').addEventListener('submit', function(e){
+    e.preventDefault();
+    const email = document.getElementById('emailField').value;
+    
+    fetch(scriptURL, {
+      method: 'POST',
+      body: new URLSearchParams({ email })
+    })
+    .then(res => alert("✅ تم الاشتراك بنجاح!"))
+    .catch(err => alert("❌ حصل خطأ، جرب تاني"));
+  });
+</script>
+
 </body>
 </html>
+
 
