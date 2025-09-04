@@ -19,14 +19,27 @@
       padding: 15px;
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 18px;
     }
     header a {
-      color: #fff;
-      font-size: 22px;
-      transition: 0.3s;
+      font-size: 24px;
+      transition: transform 0.3s, opacity 0.3s;
     }
-    header a:hover { color: #FDD600; }
+    header a:hover {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    /* ألوان السوشيال */
+    .facebook { color: #1877F2; }
+    .youtube { color: #FF0000; }
+    .shorts { color: #000000; }
+    .instagram {
+      background: radial-gradient(circle at 30% 30%, #f58529, #dd2a7b, #8134af, #515bd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tiktok { color: #000; }
+    .pinterest { color: #E60023; }
 
     h1 {
       margin-top: 20px;
@@ -102,13 +115,13 @@
       gap: 8px;
       text-decoration: none;
       color: #fff;
-      background: #25D366;
       padding: 12px 20px;
       border-radius: 25px;
       margin: 6px;
       font-size: 15px;
       transition: 0.3s;
     }
+    .contact-section a.whatsapp { background: #25D366; }
     .contact-section a.email { background: #ea4335; }
     .contact-section a:hover { opacity: 0.85; }
   </style>
@@ -117,12 +130,12 @@
 
   <!-- 🔹 Social Media Links -->
   <header>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-youtube"></i></a>
-    <a href="#"><i class="fas fa-play"></i></a> <!-- يوتيوب شورتس -->
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-tiktok"></i></a>
-    <a href="#"><i class="fab fa-pinterest"></i></a>
+    <a href="https://www.facebook.com/3bkarino997" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.youtube.com/@3bkarino997" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.youtube.com/shorts/" target="_blank" class="shorts"><i class="fas fa-play"></i></a>
+    <a href="https://www.instagram.com/3bkarino997/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@3bkarino997" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://pin.it/4ZiWSBLpb" target="_blank" class="pinterest"><i class="fab fa-pinterest"></i></a>
   </header>
 
   <h1>اشترك معنا في النشرة البريدية 🚀</h1>
@@ -144,7 +157,7 @@
 
   <!-- 🔹 Contact Section -->
   <div class="contact-section">
-    <a href="https://wa.me/201120124338" target="_blank">
+    <a href="https://wa.me/201120124338" target="_blank" class="whatsapp">
       <i class="fab fa-whatsapp"></i> واتساب
     </a>
     <a href="mailto:3bkarinoo.tech@gmail.com" class="email">
