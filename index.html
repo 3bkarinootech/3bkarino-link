@@ -1,1 +1,130 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>3bkarino - عبقرينو | Digital Marketing & Ai</title>
+  <meta name="description" content="صفحة عبقرينو الرسمية: لينكات السوشيال ونشرة الذكاء الاصطناعي.">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-K2ZHGVCS');</script>
+  <!-- End Google Tag Manager -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {background:#1e2a38; font-family:"Cairo", sans-serif; color:#212121; margin:0; padding:0;}
+    .card {background:#F2F2F2; border-radius:14px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+    .btn {display:block; padding:12px; border-radius:10px; text-align:center; font-weight:600;}
+    .btn-yellow {background:#FDD600; color:#212121;}
+    .btn-outline {border:1px solid #ccc; background:white; color:#212121;}
+    .header-bar {background:#1e2a38; color:white; padding:14px; text-align:center; font-weight:bold;}
+    a{text-decoration:none}
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2ZHGVCS"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px">
+    <div class="card" style="max-width:480px;width:100%;text-align:center">
+      
+      <!-- ✅ الصورة الشخصية (عدلت الرابط لازم يكون URL مش مسار جهازك) -->
+      <img src="<a href="https://ibb.co/WWydrBHy"><img src="https://i.ibb.co/WWydrBHy/pic.png" alt="pic" border="0"></a>" 
+          
+      <!-- العنوان -->
+      <h1 style="margin:16px 0 8px 0;font-size:22px;font-weight:700;color:#212121">عبقرينو</h1>
+      <p style="margin:0;color:#444">ماركتينج × ذكاء اصطناعي — شروحات وملفات عملية</p>
+
+      <!-- CTA رئيسي -->
+      <a href="https://youtube.com/playlist?list=PLpQkFPTYq_5cDHySmv-hCyB7CXKGxguJ3"
+         class="btn btn-yellow"
+         data-event="primary_cta"
+         data-platform="leadmagnet"
+         target="_blank" rel="noopener"
+         style="margin:16px 0">
+         🎥 شوف الـ YouTube Playlist
+      </a>
+
+      <!-- ✅ أزرار السوشيال -->
+      <div style="display:grid;gap:10px;margin-top:10px">
+        <!-- زر الفيسبوك الجديد -->
+        <a href="https://www.facebook.com/3bkarino997"
+           class="btn btn-outline"
+           data-event="click_social" data-platform="facebook"
+           target="_blank" rel="noopener">Facebook</a>
+
+        <a href="https://www.youtube.com/@3bkarino997"
+           class="btn btn-outline"
+           data-event="click_social" data-platform="youtube"
+           target="_blank" rel="noopener">YouTube</a>
+
+        <a href="https://www.tiktok.com/@3bkarino997"
+           class="btn btn-outline"
+           data-event="click_social" data-platform="tiktok"
+           target="_blank" rel="noopener">TikTok</a>
+
+        <a href="https://www.instagram.com/3bkarino997/"
+           class="btn btn-outline"
+           data-event="click_social" data-platform="instagram"
+           target="_blank" rel="noopener">Instagram</a>
+
+        <a href="https://pin.it/4ZiWSBLpb"
+           class="btn btn-outline"
+           data-event="click_social" data-platform="pinterest"
+           target="_blank" rel="noopener">Pinterest</a>
+      </div>
+
+      <!-- ✅ نموذج اشتراك -->
+      <form id="signup" style="margin-top:20px">
+        <input id="emailField" name="email" type="email" required
+               placeholder="ادخل بريدك الإلكتروني"
+               style="width:100%;padding:10px;border-radius:10px;border:1px solid #ccc;margin-bottom:8px;color:#212121">
+        <button type="submit" class="btn btn-yellow">اشترك في النشرة</button>
+      </form>
+
+      <footer style="margin-top:14px;color:#666;font-size:13px">© <span id="year"></span> عبقرينو</footer>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // تتبع التفاعلات
+    document.addEventListener('click', function(e){
+      const t = e.target.closest('[data-event]');
+      if(!t) return;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'interaction',
+        action: t.dataset.event,
+        label: t.dataset.platform || t.href
+      });
+    });
+
+    // ✅ إرسال الإيميل إلى Google Sheets
+    const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // ← هنا تحط لينك Google Apps Script
+
+    document.getElementById('signup').addEventListener('submit', function(e){
+      e.preventDefault();
+      const email = document.getElementById('emailField').value;
+      
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new URLSearchParams({ email })
+      })
+      .then(res => alert("✅ تم الاشتراك بنجاح!"))
+      .catch(err => alert("❌ حصل خطأ، جرب تاني"));
+    });
+  </script>
+</body>
+</html>
+
+
+
 
