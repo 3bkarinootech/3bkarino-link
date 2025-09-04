@@ -8,28 +8,42 @@
   <style>
     body {
       font-family: "Tajawal", sans-serif;
-      background: #f9f9f9;
+      background: #f2f2f2;
       margin: 0;
       padding: 0;
-      text-align: center;
-      color: #212121;
-    }
-    header {
-      background: #1e2a38;
-      padding: 15px;
       display: flex;
       justify-content: center;
-      gap: 18px;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 25px;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #1e2a38;
+      margin-bottom: 15px;
+    }
+    header {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
     }
     header a {
       font-size: 24px;
       transition: transform 0.3s, opacity 0.3s;
     }
-    header a:hover {
-      transform: scale(1.2);
-      opacity: 0.8;
-    }
-    /* ألوان السوشيال */
+    header a:hover { transform: scale(1.2); opacity: 0.8; }
     .facebook { color: #1877F2; }
     .youtube { color: #FF0000; }
     .shorts { color: #000000; }
@@ -41,19 +55,12 @@
     .tiktok { color: #000; }
     .pinterest { color: #E60023; }
 
-    h1 {
-      margin-top: 20px;
-      font-size: 26px;
-      color: #1e2a38;
-    }
+    h1 { font-size: 22px; margin-bottom: 10px; color:#1e2a38; }
+    p { color: #555; margin-bottom: 20px; }
 
-    /* form */
-    form {
-      margin-top: 25px;
-    }
+    form { margin: 20px 0; }
     input {
-      width: 70%;
-      max-width: 320px;
+      width: 80%;
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -75,39 +82,8 @@
     }
     .btn-yellow:hover { background: #e0c400; }
 
-    /* Center button */
-    #signup button {
-      display: block;
-      margin: 0 auto;
-    }
-
-    /* Popup */
-    #namePopup {
-      display:none;
-      position:fixed;
-      top:0;left:0;width:100%;height:100%;
-      background:rgba(0,0,0,0.6);
-      display:flex;align-items:center;justify-content:center;
-      z-index:9999;
-      animation: fadeIn 0.5s ease;
-    }
-    #popupBox {
-      background:#fff;
-      padding:20px;
-      border-radius:14px;
-      text-align:center;
-      max-width:300px;
-      width:100%;
-      transform: translateY(-30px);
-      opacity: 0;
-      animation: slideIn 0.6s forwards;
-    }
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-    @keyframes slideIn { to {transform:translateY(0);opacity:1;} }
-
-    /* Contact buttons */
     .contact-section {
-      margin-top: 30px;
+      margin-top: 20px;
     }
     .contact-section a {
       display: inline-flex;
@@ -121,33 +97,74 @@
       font-size: 15px;
       transition: 0.3s;
     }
-    .contact-section a.whatsapp { background: #25D366; }
-    .contact-section a.email { background: #ea4335; }
+    .whatsapp { background: #25D366; }
+    .email { background: #ea4335; }
     .contact-section a:hover { opacity: 0.85; }
+
+    /* Popup */
+    #namePopup {
+      display:none;
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.6);
+      display:flex;align-items:center;justify-content:center;
+      z-index:9999;
+    }
+    #popupBox {
+      background:#fff;
+      padding:20px;
+      border-radius:14px;
+      text-align:center;
+      max-width:300px;
+      width:100%;
+      transform: scale(0.8);
+      opacity: 0;
+      animation: popupShow 0.4s forwards;
+    }
+    @keyframes popupShow {
+      to { transform: scale(1); opacity:1; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- 🔹 Social Media Links -->
-  <header>
-    <a href="https://www.facebook.com/3bkarino997" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.youtube.com/@3bkarino997" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.youtube.com/shorts/" target="_blank" class="shorts"><i class="fas fa-play"></i></a>
-    <a href="https://www.instagram.com/3bkarino997/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@3bkarino997" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
-    <a href="https://pin.it/4ZiWSBLpb" target="_blank" class="pinterest"><i class="fab fa-pinterest"></i></a>
-  </header>
+  <div class="card">
+    <!-- صورة شخصية -->
+    <img src="https://i.ibb.co/WWydrBHy/pic.png" alt="3bkarino" class="profile-pic">
 
-  <h1>اشترك معنا في النشرة البريدية 🚀</h1>
+    <!-- سوشيال ميديا -->
+    <header>
+      <a href="https://www.facebook.com/3bkarino997" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.youtube.com/@3bkarino997" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.youtube.com/shorts/" target="_blank" class="shorts"><i class="fas fa-play"></i></a>
+      <a href="https://www.instagram.com/3bkarino997/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@3bkarino997" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://pin.it/4ZiWSBLpb" target="_blank" class="pinterest"><i class="fab fa-pinterest"></i></a>
+    </header>
 
-  <!-- 🔹 Email Form -->
-  <form id="signup">
-    <input id="emailField" name="email" type="email" required placeholder="ادخل بريدك الإلكتروني">
-    <button type="submit" class="btn btn-yellow">اشترك</button>
-  </form>
+    <!-- عنوان -->
+    <h1>3bkarino - عبقرينو</h1>
+    <p>Digital Marketing & AI 🚀</p>
 
-  <!-- 🔹 Name Popup -->
-  <div id="namePopup">
+    <!-- فورم الاشتراك -->
+    <form id="signup">
+      <input id="emailField" name="email" type="email" required placeholder="ادخل بريدك الإلكتروني">
+      <button type="submit" class="btn btn-yellow">اشترك</button>
+    </form>
+
+    <!-- تواصل -->
+    <div class="contact-section">
+      <a href="https://wa.me/201120124338" target="_blank" class="whatsapp">
+        <i class="fab fa-whatsapp"></i> واتساب
+      </a>
+      <a href="mailto:3bkarinoo.tech@gmail.com" class="email">
+        <i class="fas fa-envelope"></i> ايميل
+      </a>
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div id="namePopup" style="display:none;">
     <div id="popupBox">
       <h3 style="margin-bottom:10px;color:#1e2a38">شرفنا باسمك</h3>
       <input id="nameField" type="text" placeholder="اكتب اسمك هنا">
@@ -155,30 +172,18 @@
     </div>
   </div>
 
-  <!-- 🔹 Contact Section -->
-  <div class="contact-section">
-    <a href="https://wa.me/201120124338" target="_blank" class="whatsapp">
-      <i class="fab fa-whatsapp"></i> واتساب
-    </a>
-    <a href="mailto:3bkarinoo.tech@gmail.com" class="email">
-      <i class="fas fa-envelope"></i> ايميل
-    </a>
-  </div>
-
   <script>
-    const scriptURL = "https://script.google.com/macros/s/XXXXX/exec"; // ← ضع هنا رابط الـ Web App
+    const scriptURL = "https://script.google.com/macros/s/XXXXX/exec"; // ضع هنا رابط Web App
     let userEmail = "";
 
-    // أول خطوة: استلام الإيميل
+    // Step 1: بعد إدخال الإيميل
     document.getElementById('signup').addEventListener('submit', function(e){
       e.preventDefault();
       userEmail = document.getElementById('emailField').value;
-
-      // أظهر نافذة الاسم
       document.getElementById('namePopup').style.display = "flex";
     });
 
-    // ثاني خطوة: استلام الاسم وإرسال البيانات كلها
+    // Step 2: بعد إدخال الاسم
     document.getElementById('okBtn').addEventListener('click', function(){
       const userName = document.getElementById('nameField').value;
 
@@ -188,8 +193,8 @@
       })
       .then(res => {
         alert("✅ تم الاشتراك بنجاح!");
-        document.getElementById('namePopup').style.display = "none"; // قفل النافذة
-        document.getElementById('signup').reset(); // تفريغ الفورم
+        document.getElementById('namePopup').style.display = "none";
+        document.getElementById('signup').reset();
       })
       .catch(err => alert("❌ حصل خطأ، جرب تاني"));
     });
