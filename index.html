@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3bkarino Tech</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+
   <!-- ✅ استدعاء خط Tajawal -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
-  
+
+  <!-- ✅ أيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       font-family: "Tajawal", sans-serif;
@@ -22,4 +24,152 @@
       align-items: center;
       min-height: 100vh;
     }
-    .card {
+
+    .container {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #FFD600; /* ✅ أصفر */
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #1e2a38;
+    }
+
+    .social-links {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      font-size: 20px;
+      color: #fff;
+      background: #1e2a38;
+      padding: 10px 15px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      background: #FFD600;
+      color: #000;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input[type="email"] {
+      width: 90%;
+      padding: 12px;
+      border: 2px solid #1e2a38;
+      border-radius: 10px;
+      text-align: center; /* ✅ النص في الوسط */
+      font-size: 16px;
+    }
+
+    button.subscribe-btn {
+      margin-top: 15px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #FFD600;
+      color: #1e2a38;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button.subscribe-btn:hover {
+      background: #1e2a38;
+      color: #fff;
+    }
+
+    .contact {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact a {
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .whatsapp {
+      background: #25D366;
+    }
+
+    .email {
+      background: #1e2a38;
+    }
+
+    .contact a:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ✅ صورة شخصية -->
+    <img src="profile.jpg" alt="صورة عبقرينو" class="profile-img">
+
+    <!-- ✅ العنوان -->
+    <h1>3bkarino - عبقرينو</h1>
+
+    <!-- ✅ روابط السوشيال ميديا -->
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i> Shorts</a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+
+    <!-- ✅ فورم الإيميل -->
+    <form>
+      <input id="emailField" name="email" type="email" required placeholder="ادخل بريدك الإلكتروني">
+      <br>
+      <button type="submit" class="subscribe-btn">اشترك</button>
+    </form>
+
+    <!-- ✅ أزرار التواصل -->
+    <div class="contact">
+      <a href="https://wa.me/201120124338" class="whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> تواصل واتساب
+      </a>
+      <a href="mailto:3bkarinoo.tech@gmail.com" class="email">
+        <i class="fas fa-envelope"></i> 3bkarinoo.tech@gmail.com
+      </a>
+    </div>
+  </div>
+</body>
+</html>
