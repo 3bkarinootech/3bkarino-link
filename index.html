@@ -208,58 +208,53 @@
 
 
 <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbxCUPb0WQysZOadV2q3PkxCQ6lErVr51w0eN6ihCoPLO_ypa2i2nxFR57XfcncGa3kdnw/exec";
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbyS0toVTXqqaVhNckmj7jddZvDJnXLDM_JHVd9mlNoHsPGrz36mtAZD0UTm_vZapxgXHA/exec";
 
-  const deviceInfo = navigator.userAgent;
-  let userEmail = "";
-  let userName = "";
-  const sessionID = Date.now() + "_" + Math.floor(Math.random() * 100000); // رقم فريد للجلسة
+  // ✅ نولّد ID ثابت ونخزنه
+  function getUserId() {
+    let uid = localStorage.getItem("userId");
+    if (!uid) {
+      uid = "UID_" + Date.now() + "_" + Math.floor(Math.random()*100000);
+      localStorage.setItem("userId", uid);
+    }
+    return uid;
+  }
 
-  // 🟡 تسجيل أي حدث (عام)
-  function logAction(action, details="") {
+  const userId = getUserId();
+
+  // ✅ اسم الجهاز
+  function getDevice() {
+    return navigator.userAgent;
+  }
+
+  // ✅ دالة لتسجيل أي حدث
+  function logAction(action, details="", email="", name="") {
     fetch(scriptURL, {
       method: "POST",
       body: new URLSearchParams({
-        session: sessionID,
+        userId: userId,
+        device: getDevice(),
         action: action,
         details: details,
-        email: userEmail,
-        name: userName,
-        device: deviceInfo,
-        timestamp: new Date().toISOString()
+        email: email,
+        name: name
       })
     });
   }
 
-  // 🟡 بعد إدخال الإيميل
-  document.getElementById('signup').addEventListener('submit', function(e){
-    e.preventDefault();
-    userEmail = document.getElementById('emailField').value;
-    document.getElementById('namePopup').style.display = "flex";
-    logAction("typed_email", "كتب الإيميل");
-  });
-
-  // 🟡 بعد إدخال الاسم
-  document.getElementById('okBtn').addEventListener('click', function(){
-    userName = document.getElementById('nameField').value;
-    logAction("typed_name", "كتب الاسم");
-
-    alert("✅ تم الاشتراك بنجاح!");
-    document.getElementById('namePopup').style.display = "none";
-    document.getElementById('signup').reset();
-  });
-
-  // 🟡 متابعة الضغط على أي زر (سوشيال أو تواصل)
-  document.querySelectorAll("header a, .contact-section a").forEach(link => {
-    link.addEventListener("click", function() {
-      logAction("click", this.href);
+  // مثال: يسجل كل ضغطة زر
+  document.querySelectorAll("a, button").forEach(el => {
+    el.addEventListener("click", () => {
+      logAction("click", el.innerText || el.href);
     });
   });
 
-  // 🟡 متابعة الخروج بدون أي فعل
-  window.addEventListener("beforeunload", function() {
-    logAction("exit", "المستخدم غادر الصفحة");
+  // مثال: يسجل خروج المستخدم
+  window.addEventListener("beforeunload", () => {
+    logAction("exit", "غادر الصفحة");
   });
+
 
 
 
@@ -301,6 +296,7 @@
 
 </body>
 </html>
+
 
 
 
