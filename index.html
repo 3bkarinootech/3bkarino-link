@@ -1,89 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>3bkarino - عبقرينو | Digital Marketing & Ai</title>
-  <meta name="description" content="صفحة عبقرينو الرسمية: لينكات السوشيال ونشرة الذكاء الاصطناعي.">
-
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3bkarino Tech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {background:#1e2a38; font-family:"Cairo", sans-serif; color:#212121; margin:0; padding:0;}
-    .card {background:#F2F2F2; border-radius:14px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
-    .btn {display:block; padding:12px; border-radius:10px; text-align:center; font-weight:600;}
-    .btn-yellow {background:#FDD600; color:#212121;}
-    .btn-outline {border:1px solid #ccc; background:white; color:#212121;}
-    a{text-decoration:none}
+    body {
+      font-family: "Tajawal", sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: #212121;
+    }
+    header {
+      background: #1e2a38;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    header a {
+      color: #fff;
+      font-size: 22px;
+      transition: 0.3s;
+    }
+    header a:hover { color: #FDD600; }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 26px;
+      color: #1e2a38;
+    }
+
+    /* form */
+    form {
+      margin-top: 25px;
+    }
+    input {
+      width: 70%;
+      max-width: 320px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .btn-yellow {
+      background: #FDD600;
+      color: #1e2a38;
+      font-weight: bold;
+    }
+    .btn-yellow:hover { background: #e0c400; }
+
+    /* Center button */
+    #signup button {
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Popup */
+    #namePopup {
+      display:none;
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.6);
+      display:flex;align-items:center;justify-content:center;
+      z-index:9999;
+      animation: fadeIn 0.5s ease;
+    }
+    #popupBox {
+      background:#fff;
+      padding:20px;
+      border-radius:14px;
+      text-align:center;
+      max-width:300px;
+      width:100%;
+      transform: translateY(-30px);
+      opacity: 0;
+      animation: slideIn 0.6s forwards;
+    }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes slideIn { to {transform:translateY(0);opacity:1;} }
+
+    /* Contact buttons */
+    .contact-section {
+      margin-top: 30px;
+    }
+    .contact-section a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      background: #25D366;
+      padding: 12px 20px;
+      border-radius: 25px;
+      margin: 6px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+    .contact-section a.email { background: #ea4335; }
+    .contact-section a:hover { opacity: 0.85; }
   </style>
 </head>
 <body>
-  <main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px">
-    <div class="card" style="max-width:480px;width:100%;text-align:center">
-      
-      <!-- ✅ الصورة الشخصية -->
-      <img src="https://i.ibb.co/WWydrBHy/pic.png" 
-           alt="3bkarino - عبقرينو" 
-           style="width:140px;height:140px;
-                  border-radius:50%;
-                  margin:20px auto;
-                  object-fit:cover;
-                  border:5px solid #1e2a38;
-                  display:block;">
-      
-      <!-- العنوان -->
-      <h1 style="margin:16px 0 8px 0;font-size:22px;font-weight:700;color:#212121">3bkarino - عبقرينو</h1>
-      <p style="margin:0;color:#444">Digital Marketing & Ai</p>
 
-      <!-- CTA رئيسي -->
-      <a href="https://youtube.com/playlist?list=PLpQkFPTYq_5cDHySmv-hCyB7CXKGxguJ3"
-         class="btn btn-yellow"
-         target="_blank" rel="noopener"
-         style="margin:16px 0">
-         YouTube Shorts
-      </a>
+  <!-- 🔹 Social Media Links -->
+  <header>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fas fa-play"></i></a> <!-- يوتيوب شورتس -->
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <a href="#"><i class="fab fa-pinterest"></i></a>
+  </header>
 
-      <!-- أزرار السوشيال -->
-      <div style="display:grid;gap:10px;margin-top:10px">
-        <a href="https://www.facebook.com/3bkarino997" class="btn btn-outline" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.youtube.com/@3bkarino997" class="btn btn-outline" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://www.tiktok.com/@3bkarino997" class="btn btn-outline" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.instagram.com/3bkarino997/" class="btn btn-outline" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://pin.it/4ZiWSBLpb" class="btn btn-outline" target="_blank" rel="noopener">Pinterest</a>
-      </div>
+  <h1>اشترك معنا في النشرة البريدية 🚀</h1>
 
-      <!-- نموذج اشتراك -->
-      <form id="signup" style="margin-top:20px">
-        <input id="emailField" name="email" type="email" required
-               placeholder="ادخل بريدك الإلكتروني"
-               style="width:100%;padding:10px;border-radius:10px;border:1px solid #ccc;margin-bottom:8px;color:#212121">
-        <button type="submit" class="btn btn-yellow">اشترك في النشرة</button>
-      </form>
+  <!-- 🔹 Email Form -->
+  <form id="signup">
+    <input id="emailField" name="email" type="email" required placeholder="ادخل بريدك الإلكتروني">
+    <button type="submit" class="btn btn-yellow">اشترك</button>
+  </form>
 
-      <footer style="margin-top:14px;color:#666;font-size:13px">© <span id="year"></span> عبقرينو</footer>
+  <!-- 🔹 Name Popup -->
+  <div id="namePopup">
+    <div id="popupBox">
+      <h3 style="margin-bottom:10px;color:#1e2a38">شرفنا باسمك</h3>
+      <input id="nameField" type="text" placeholder="اكتب اسمك هنا">
+      <button id="okBtn" class="btn btn-yellow" style="margin-top:10px">OK</button>
     </div>
-  </main>
+  </div>
+
+  <!-- 🔹 Contact Section -->
+  <div class="contact-section">
+    <a href="https://wa.me/201120124338" target="_blank">
+      <i class="fab fa-whatsapp"></i> واتساب
+    </a>
+    <a href="mailto:3bkarinoo.tech@gmail.com" class="email">
+      <i class="fas fa-envelope"></i> ايميل
+    </a>
+  </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const scriptURL = "https://script.google.com/macros/s/XXXXX/exec"; // ← ضع هنا رابط الـ Web App
+    let userEmail = "";
+
+    // أول خطوة: استلام الإيميل
+    document.getElementById('signup').addEventListener('submit', function(e){
+      e.preventDefault();
+      userEmail = document.getElementById('emailField').value;
+
+      // أظهر نافذة الاسم
+      document.getElementById('namePopup').style.display = "flex";
+    });
+
+    // ثاني خطوة: استلام الاسم وإرسال البيانات كلها
+    document.getElementById('okBtn').addEventListener('click', function(){
+      const userName = document.getElementById('nameField').value;
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new URLSearchParams({ email: userEmail, name: userName })
+      })
+      .then(res => {
+        alert("✅ تم الاشتراك بنجاح!");
+        document.getElementById('namePopup').style.display = "none"; // قفل النافذة
+        document.getElementById('signup').reset(); // تفريغ الفورم
+      })
+      .catch(err => alert("❌ حصل خطأ، جرب تاني"));
+    });
   </script>
-
-  <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwQRQUy6nkNT9yx61yb-bmiyWH3SmRvcnZc4rG0alM_bjYK9XIdhaP8dKi_thIKjP6YUA/exec"; // ← ضع هنا رابط الـ Web App
-
-  document.getElementById('signup').addEventListener('submit', function(e){
-    e.preventDefault();
-    const email = document.getElementById('emailField').value;
-    
-    fetch(scriptURL, {
-      method: 'POST',
-      body: new URLSearchParams({ email })
-    })
-    .then(res => alert("✅ تم الاشتراك بنجاح!"))
-    .catch(err => alert("❌ حصل خطأ، جرب تاني"));
-  });
-</script>
 
 </body>
 </html>
-
-
